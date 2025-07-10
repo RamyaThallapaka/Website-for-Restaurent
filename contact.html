@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+        body{
+            background-image:url("https://img.freepik.com/free-photo/top-view-blue-monday-concept-composition-with-telephone_23-2149139103.jpg?size=626&ext=jpg&ga=GA1.1.179117598.1697646441&semt=ais");
+            background-repeat:no-repeat;
+            background-size:100vw 100vh;
+
+        }
+        form{
+            margin-left:450px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contbg">
+        <center><h1 style="font-size: 40px;margin-top: 30px;" id="Contact">Contact Us</h1></center><br><br>
+        <div class="contdetails">
+          <form id="contactForm">
+              <label for="name">Name</label><br><br>
+              <input type="text" id="name" name="name" placeholder="Enter your name" style="width:400px; height:30px;" required><br><br>
+              
+              <label for="email">Email</label><br><br>
+              <input type="email" id="email" name="email" placeholder="Enter your Email address" style="width:400px; height:30px;" required><br><br>
+              
+              <label for="phone">Phone</label><br><br>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your number" style="width:400px; height:30px;" required><br><br>
+              
+              <label for="message">Comments</label><br><br>
+              <textarea id="message" name="message" style="width:400px; height:100px" required></textarea><br><br>
+              
+              <button type="submit" style="width:100px;height:30px;">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById('contactForm');
+      
+      // Add event listener for form submission
+      form.addEventListener('submit', function(event) {
+        // Prevent default form submission
+        event.preventDefault();
+    
+        // Validate the form inputs
+        if (validateForm()) {
+          // If the form is valid, submit it
+          form.submit();
+        }
+      });
+    
+      // Function to validate form inputs
+      function validateForm() {
+        let isValid = true;
+    
+        // Validate name
+        const nameInput = document.getElementById('name');
+        if (!nameInput.checkValidity()) {
+          alert('Please enter your name.');
+          isValid = false;
+        }
+    
+        // Validate email
+        const emailInput = document.getElementById('email');
+        if (!emailInput.checkValidity()) {
+          alert('Please enter a valid email address.');
+          isValid = false;
+        }
+    
+        // Validate phone number
+        const phoneInput = document.getElementById('phone');
+        const phoneRegex = /^\d{10}$/; // Regular expression for exactly 10 digits
+        if (!phoneInput.value.match(phoneRegex)) {
+          alert('Please enter a valid 10-digit phone number.');
+          isValid = false;
+        }
+    
+        // Validate message
+        const messageInput = document.getElementById('message');
+        if (!messageInput.checkValidity()) {
+          alert('Please enter a message.');
+          isValid = false;
+        }
+    
+        return isValid;
+      }
+      </script>
+    
+</body>
+</html>
